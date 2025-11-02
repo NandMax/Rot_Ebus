@@ -148,6 +148,7 @@ header nav {
     font-weight: 600
 }
 
+/* Aviso */
 .aviso{
     display:flex;
     gap:8px;
@@ -156,7 +157,7 @@ header nav {
 }
 
 .sem-avisos img {
-  width: 74px;
+  width: 50%;
   opacity: 0.9;
 }
 
