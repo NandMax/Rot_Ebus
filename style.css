@@ -20,6 +20,7 @@ body {
     color: #113;
 }
 
+/*  Cabeçalho   */
 header {
     background: var(--blue);
     color: #fff;
@@ -55,7 +56,7 @@ header nav {
     gap: 20px
 }
 
-/* Left column cards */
+/* Coluna Esquerda */
 .left {
     display: grid;
     grid-template-columns: 1fr;
@@ -65,7 +66,7 @@ header nav {
 .card {
     background: var(--card);
     border-radius: 12px;
-    padding: 16px;
+    padding: 16px 16px 16px 18px;
     border: 1px solid rgba(16, 24, 40, 0.06);
     box-shadow: 0 6px 18px rgba(12, 30, 60, 0.04)
 }
@@ -80,11 +81,46 @@ header nav {
     font-size: 14px
 }
 
-/* Routes list on right */
+#titulo{
+    text-align: center;
+}
+
+/* Coluna Direita */
 .right {
     display: flex;
     flex-direction: column;
     gap: 12px
+}
+
+#titulo-direito{
+    display:flex;
+    align-items:center;
+    justify-content:"space-between";
+    font-size: 16px;
+    padding-left: 5%;
+}
+
+.linhas-bus{
+    margin-top:12px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.ver-btn {
+  background: #0b57b7;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: background 0.2s;
+  margin-left: 5%;
+}
+
+.ver-btn:hover {
+  background: #083c82;
 }
 
 .route-btn {
@@ -104,14 +140,27 @@ header nav {
     align-items: center
 }
 
-.badge {
+.bus {
     background: var(--panel);
     padding: 8px;
     border-radius: 8px;
+    font-size: 25px;
     font-weight: 600
 }
 
-/* Search box */
+.aviso{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-top:8px
+}
+
+.sem-avisos img {
+  width: 74px;
+  opacity: 0.9;
+}
+
+/* Campo de Pesquisa */
 .search {
     display: flex;
     flex-direction: column;
@@ -135,47 +184,77 @@ header nav {
     border-radius: 999px;
     padding: 8px 12px;
     font-size: 14px;
-    border: 1px solid #dceffc
+    border: 1px solid #dceffc;
+    cursor: pointer;
+    transition: background 0.2s;    
 }
 
-/* Chat preview */
-.chat-preview {
+.help-item:hover {
+  background: #e5e7eb;
+}
+
+/* Chat */
+.chat {
     display: flex;
     flex-direction: column;
-    gap: 8px
+    gap: 8px;
 }
 
-.chat-bubble {
+.chat p.muted {
+    margin-top: 0; 
+}
+
+.msg-preview{
+    padding: 10px 10px 10px 10px;
+    border: 1px solid #e6ecf4;
+}
+
+.msg{
+     display: flex;
+    align-items: center;
     background: #f6f8fb;
     padding: 8px;
     border-radius: 12px;
     border: 1px solid #e6ecf4;
-    font-size: 13px
+    font-size: 13px;
+    margin-bottom: 8px;
 }
 
-.chat-actions {
+.msg .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #d9e1ec;
+    margin-right: 1%;
+}
+
+.actions {
     display: flex;
-    gap: 10px
+    gap: 10px;
 }
 
-.btn-primary {
+.btn{
     background: var(--blue);
     color: #fff;
-    padding: 10px 14px;
-    border-radius: 10px;
-    border: none;
-    cursor: pointer
-}
-
-.btn-ghost {
-    background: transparent;
-    border: 1px solid #dbe6f7;
     padding: 9px 12px;
     border-radius: 10px;
-    cursor: pointer
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    margin-top: 10px;
 }
 
-/* Notice panel */
+.btn-ghost{
+    background:transparent;
+    border:1px solid #dbe6f7;
+    padding:9px 12px;
+    border-radius:10px;
+    cursor:pointer
+}
+
+
+/* Painel de notícias */
 .notice {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -189,6 +268,11 @@ header nav {
     text-align: center
 }
 
+.item{
+    font-size: 15px;
+}
+
+/*  Rodapé   */
 footer {
     text-align: center;
     background: var(--blue);
