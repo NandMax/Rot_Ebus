@@ -1,3 +1,4 @@
+/*----------Página Inicial----------*/
 :root {
     --blue: #0b57b7;
     --light: #f6f8fb;
@@ -56,7 +57,7 @@ header nav {
     gap: 20px
 }
 
-/*----------Coluna Esquerda----------*/
+/*---Coluna Esquerda---*/
 .left {
     display: grid;
     grid-template-columns: 1fr;
@@ -81,9 +82,7 @@ header nav {
     font-size: 14px
 }
 
-#titulo{
-    text-align: center;
-}
+#titulo{ text-align: center; }
 
 /* Chat */
 .chat {
@@ -92,9 +91,7 @@ header nav {
     gap: 8px;
 }
 
-.chat p.muted {
-    margin-top: 0; 
-}
+.chat p.muted { margin-top: 0; }
 
 .msg-preview{
     padding: 10px 10px 10px 10px;
@@ -174,7 +171,7 @@ header nav {
 }
 
 
-/*----------Coluna Direita----------*/
+/*---Coluna Direita---*/
 .right {
     display: flex;
     flex-direction: column;
@@ -315,9 +312,7 @@ input#q:focus {
     flex-direction: column; 
 }
 
-.aviso p{
-    margin-bottom: 2%;
-}
+.aviso p{ margin-bottom: 2%; }
 
 .aviso .emonji{
     font-size: 20px;
@@ -326,12 +321,8 @@ input#q:focus {
 
 
 @keyframes pulse {
-  0%, 100% {
-    text-shadow: 0 0 3px #ff6600, 0 0 8px #ffcc00;
-  }
-  50% {
-    text-shadow: 0 0 6px #ff3300, 0 0 16px #ffff00;
-  }
+  0%, 100% { text-shadow: 0 0 3px #ff6600, 0 0 8px #ffcc00; }
+  50% { text-shadow: 0 0 6px #ff3300, 0 0 16px #ffff00; }
 }
 
 .atalho{
