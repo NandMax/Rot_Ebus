@@ -143,11 +143,13 @@ header nav {
     color: #fff;
     padding: 9px 12px;
     border-radius: 10px;
+    text-decoration: none; 
     border: none;
     cursor: pointer;
     font-size: 12px;
     margin-top: 10px;
     transition: transform 0.2s ease, background 0.2s ease;
+    display: inline-block;
 }
 
 .btn-ghost{
@@ -225,12 +227,6 @@ header nav {
   background: #e8f1ff;
   transform: scale(1.02);
   box-shadow: 0 4px 10px rgba(11, 87, 183, 0.3);
-}
-
-.route-info {
-    display: flex;
-    gap: 10px;
-    align-items: center
 }
 
 .bus {
@@ -312,7 +308,9 @@ input#q:focus {
     flex-direction: column; 
 }
 
-.aviso p{ margin-bottom: 2%; }
+.aviso p{
+    margin-bottom: 2%;
+}
 
 .aviso .emonji{
     font-size: 20px;
@@ -321,8 +319,12 @@ input#q:focus {
 
 
 @keyframes pulse {
-  0%, 100% { text-shadow: 0 0 3px #ff6600, 0 0 8px #ffcc00; }
-  50% { text-shadow: 0 0 6px #ff3300, 0 0 16px #ffff00; }
+  0%, 100% {
+    text-shadow: 0 0 3px #ff6600, 0 0 8px #ffcc00;
+  }
+  50% {
+    text-shadow: 0 0 6px #ff3300, 0 0 16px #ffff00;
+  }
 }
 
 .atalho{
