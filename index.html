@@ -83,7 +83,7 @@
 
     <aside class="right"> <!--Bloco Direito-->
       <div class="card">
-        <div id="titulo-direito">
+        <div id="titulo-direito" class="titulo-direito">
           <strong> Clique em uma rota para ver os horários e os pontos de paradas</strong>
           <div class="bus">🚌</div>
         </div>
@@ -154,9 +154,9 @@
       <div class="card">
         <h3>Atalhos</h3>
         <div class="atalho">
-          <button class="btn-ghost">Mapa de Rotas</button>
-          <button class="btn-ghost">Horários</button>
-          <button class="btn-ghost">Contato</button>
+          <button class="btn-ghost" onclick="scrollAndBlink('titulo-direito')">Mapa de Rotas</button>
+          <button class="btn-ghost" onclick="scrollAndBlink('titulo-direito')">Horários</button>
+          <button class="btn-ghost" onclick="location.href='contato.html'">Contato</button>
         </div>
       </div>
 
