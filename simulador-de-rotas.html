@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rot Ebus</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <a href="presidente-vargas.html" class="btn-voltar">◀</a>
+    <div class="logo">ROT EBUS</div>
+    <div class="banner">A Sua Plataforma de Ônibus Favorita</div>
+    <nav>Pará › Belém e Região › Águas Lindas</nav>
+  </header>
+
+  <main class="map-section2">
+    <!-- Coluna Esquerda -->
+    <aside class="left-panel">
+    <input id="origem" type="text" placeholder="Informe o local de Partida">
+    <input id="destino" type="text" placeholder="Informe o local de Destino">
+
+    <div class="btn-group">
+        <button id="calcular" class="btn">Calcular Trajeto</button>
+        <button id="favoritar" class="btn btn-fav">⭐ Favoritar linha</button>
+    </div>
+    <div class="info-box">
+        <p>Duração estimada: <b id="duracao">informe o local</b></p>
+        <p>Distância: <b id="distancia">informe o local</b></p>
+    </div>
+    <div class="saved-lines">
+        <h5>Linhas Salvas</h5>
+        <p class="empty">Nenhuma linha salva ainda</p>
+        <ul></ul>
+    </div>
+    <div class="apps"> 
+        <p>Viagem muito longa? Que tal pedir um:</p> 
+        <div class="apps-btns"> 
+            <button class="uber" onclick="window.open('https://m.uber.com/ul/', '_blank')">Uber</button> 
+            <button class="nove" onclick="window.open('https://99app.com/', '_blank')">99</button> 
+        </div> 
+    </div>
+    </aside>
+
+    <!-- Mapa -->
+    <section class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.947057734531!2d-48.4523565!3d-1.3791152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a4605e7b7125b9%3A0x37d9e7764a0f58a1!2sBel%C3%A9m%20-%20PA!5e0!3m2!1spt-BR!2sbr!4v0000000000000"
+        allowfullscreen="" loading="lazy"></iframe>
+    </section>
+
+    <!-- Coluna Direita -->
+    <aside class="right-panel">
+      <label for="q"><strong>Não achou sua rota? Pesquise aqui</strong></label>
+        <input id="q" placeholder="Pesquisar linha ou ponto..." />
+        <div class="help-list">
+          <div class="help-item">Osvaldo Cruz</div>
+          <div class="help-item">Unama Br</div>
+          <div class="help-item">José Malcher com Castelo</div>
+          <div class="help-item">IFPA | Almirante com Estrella</div>
+        </div>
+
+      <div class="info-box">
+        <h5 class="titulo-h5">Linhas Disponíveis</h5>
+        <p>🚌 Informe um local</p>
+      </div>
+
+      <div class="info-box">
+        <h5 class="titulo-h5">Paradas Próximas</h5>
+        <p>🚏 Informe um local</p>
+      </div>
+
+      <button class="btn visualizar">Visualizar trajeto completo</button>
+    </aside>
+  </main>
+
+  <footer>
+    📍 Águas Lindas - Ananindeua/PA
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
