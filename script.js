@@ -18,3 +18,12 @@ document.querySelectorAll('.route-btn').forEach(btn => {
     });
   }
 });
+
+// Direciona os botões para as rotas disponíveis
+function scrollAndBlink(id) {
+  const elemento = document.getElementById(id);
+  elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  elemento.classList.remove('flash');
+  void elemento.offsetWidth; 
+  elemento.classList.add('flash');
+}
