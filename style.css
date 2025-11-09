@@ -237,6 +237,25 @@ header nav {
     font-weight: 600
 }
 
+@keyframes flashBlue {
+  0% {
+    color: inherit;
+    text-shadow: none;
+  }
+  50% {
+    color: #2563eb;
+    text-shadow: 0 0 8px rgba(37,99,235,0.6);
+  }
+  100% {
+    color: inherit;
+    text-shadow: none;
+  }
+}
+
+.flash {
+  animation: flashBlue 5s ease-in-out 1;
+}
+
 /* Campo de Pesquisa */
 .search {
     display: flex;
