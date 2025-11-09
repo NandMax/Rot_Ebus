@@ -1,13 +1,20 @@
-// Pega o campo de busca
+// Insere as sugestões de pesquisa no campo de busca
 const searchInput = document.getElementById('q');
-
-// Pega todos os "help-item"
 const helpItems = document.querySelectorAll('.help-item');
 
-// Adiciona o clique em cada um
 helpItems.forEach(item => {
   item.addEventListener('click', () => {
-    searchInput.value = item.textContent; // coloca o texto no input
-    searchInput.focus(); // move o cursor pra lá
+    searchInput.value = item.textContent;
+    searchInput.focus();
   });
+});
+
+// Deixa todo o bloco das rotas clicável
+document.querySelectorAll('.route-btn').forEach(btn => {
+  const link = btn.querySelector('.ver-btn');
+  if (link) {
+    btn.addEventListener('click', () => {
+      window.location.href = link.getAttribute('href');
+    });
+  }
 });
