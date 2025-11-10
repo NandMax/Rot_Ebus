@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rot Ebus</title>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 </head>
 <body>
 
@@ -18,8 +20,32 @@
   <main class="map-section2">
     <!-- Coluna Esquerda -->
     <aside class="left-panel">
-    <input id="origem" type="text" placeholder="Informe o local de Partida">
-    <input id="destino" type="text" placeholder="Informe o local de Destino">
+    <input id="origem" list="locais" type="text" placeholder="Informe o local de Partida">
+    <input id="destino" list="locais" type="text" placeholder="Informe o local de Destino">
+
+    <datalist id="locais">
+      <option value="Águas Lindas">
+      <option value="Feira do Águas Lindas">
+      <option value="Terminal Águas Lindas">
+      <option value="Av. Independência (Águas Lindas)">
+      <option value="Av. Dom Vicente Zico">
+      <option value="Rua SN-21 (Águas Lindas)">
+      <option value="Complexo Cidade Nova">
+      <option value="Rua WE-72">
+      <option value="Av. WE-29">
+      <option value="Rodovia Mário Covas">
+      <option value="BR-316 (Ananindeua)">
+      <option value="Entroncamento">
+      <option value="BR-316 com Av. Augusto Montenegro">
+      <option value="Av. Almirante Barroso">
+      <option value="São Brás">
+      <option value="Praça Brasil">
+      <option value="Av. Magalhães Barata">
+      <option value="Praça da República">
+      <option value="Ver-o-Peso">
+      <option value="Estação das Docas">
+      <option value="Pátio Belém">
+    </datalist>
 
     <div class="btn-group">
         <button id="calcular" class="btn">Calcular Trajeto</button>
@@ -44,10 +70,8 @@
     </aside>
 
     <!-- Mapa -->
-    <section class="map-container">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.947057734531!2d-48.4523565!3d-1.3791152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x92a4605e7b7125b9%3A0x37d9e7764a0f58a1!2sBel%C3%A9m%20-%20PA!5e0!3m2!1spt-BR!2sbr!4v0000000000000"
-        allowfullscreen="" loading="lazy"></iframe>
+   <section class="map-container">
+      <div id="map"></div>
     </section>
 
     <!-- Coluna Direita -->
@@ -55,18 +79,18 @@
       <label for="q"><strong>Não achou sua rota? Pesquise aqui</strong></label>
         <input id="q" placeholder="Pesquisar linha ou ponto..." />
         <div class="help-list">
-          <div class="help-item">Osvaldo Cruz</div>
-          <div class="help-item">Unama Br</div>
-          <div class="help-item">José Malcher com Castelo</div>
-          <div class="help-item">IFPA | Almirante com Estrella</div>
+          <div class="help-item" data-local="Osvaldo Cruz">Osvaldo Cruz</div>
+          <div class="help-item" data-local="Unama Br">Unama Br</div>
+          <div class="help-item" data-local="José Malcher com Castelo">José Malcher com Castelo</div>
+          <div class="help-item" data-local="IFPA | Almirante com Estrella">IFPA | Almirante com Estrella</div>
         </div>
 
-      <div class="info-box">
+      <div class="info-box" id="linhas-box">
         <h5 class="titulo-h5">Linhas Disponíveis</h5>
         <p>🚌 Informe um local</p>
       </div>
 
-      <div class="info-box">
+      <div class="info-box" id="paradas-box">
         <h5 class="titulo-h5">Paradas Próximas</h5>
         <p>🚏 Informe um local</p>
       </div>
