@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROT EBUS - Linha de Águas Lindas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="btn-voltar">◀</a>
+    <div class="logo">ROT EBUS</div>
+    <div class="banner">A Sua Plataforma de Ônibus Favorita</div>
+    <nav>Pará › Belém e Região › Águas Lindas</nav>
+  </header>
+
+  <main class="container4">
+    <!-- COLUNA ESQUERDA -->
+    <aside class="coluna-esq">
+      <h2>Linha de Águas Lindas</h2>
+      
+      <div class="ranking">
+        <h3>Ranking da Semana</h3>
+        <div class="pessoa">
+          <img src="image/img3.jpg" alt="primeiro lugar">
+          <div class="info">
+            <span>Eu sou Douglas</span>
+            <strong>930 pts</strong>
+          </div>
+        </div>
+        <div class="pessoa">
+          <img src="image/img2.jpg" alt="segundo lugar">
+          <div class="info">
+            <span>Samie Senpai</span>
+            <strong>860 pts</strong>
+          </div>
+        </div>
+        <div class="pessoa">
+          <img src="image/img1.jpg" alt="terceiro lugar">
+          <div class="info">
+            <span>Jhon Coockie</span>
+            <strong>620 pts</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="contribuicao">
+        <h3>Sua contribuição</h3>
+        <div class="pontuacao">280 pts</div>
+      </div>
+    </aside>
+
+    <!-- ÁREA DE CHAT -->
+    <section class="chat2">
+      <div class="mensagem">
+        <img src="image/img1.jpg" class="foto">
+        <div class="balao">Gente, mal notícia, o ônibus do Ver-o-Peso deu prego!</div>
+        <button class="curtir">👍</button>
+      </div>
+
+      <div class="mensagem">
+        <img src="image/img2.jpg" class="foto">
+        <div class="balao">Mds caraa! Já vi que vou me atrasar hoje</div>
+        <button class="curtir">👍</button>
+      </div>
+
+      <div class="mensagem">
+        <img src="image/img3.jpg" class="foto">
+        <div class="balao">Ufa, Tem um aqui na Osvaldo Cruz com a quadra 5</div>
+        <button class="curtir">👍</button>
+      </div>
+
+      <div class="mensagem mapa-msg">
+        <img src="image/img3.jpg" class="foto">
+        <div id="mapa"></div>
+        <div class="botoes">
+          <button class="btn" onclick="location.href='simulador-de-rotas.html'">Ver local</button>
+          <button class="btn-curtir curtir">Valeu 👍</button>
+        </div>
+      </div>
+
+      <div class="mensagem">
+        <img src="image/img2.jpg" class="foto">
+        <div class="balao">Nossa, ainda bem, já estava preocupada</div>
+        <button class="curtir">👍</button>
+      </div>
+
+      <div class="mensagem">
+        <img src="image/img1.jpg" class="foto">
+        <div class="balao">Muchas Gracias Amigo</div>
+        <button class="curtir">👍</button>
+      </div>
+
+      <form id="chat-form">
+        <input type="text" id="mensagem" placeholder="Escreva uma mensagem" class="campo-msg" required>
+        <button type="submit" class="btn-enviar">➤</button>
+      </form>
+    </section>
+
+    <!-- COLUNA DIREITA -->
+    <aside class="coluna-dir">
+      <h4>Compartilhar Localização</h4>
+      <button class="btn-localizacao">Compartilhar 📍</button>
+      <p>Os dados compartilhados não podem ser acessados por terceiros.</p>
+
+      <h3>Enviar reações</h3>
+      <div class="reacoes">
+        <button class="btn-video">🚌<br>50 pts</button>
+        <button class="btn-video">🎉<br>50 pts</button>
+        <button class="btn-video">🔥<br>50 pts</button>
+        <button class="btn-video">💖<br>100 pts</button>
+        <button class="btn-video">💋<br>150 pts</button>
+        <button class="btn-video">👽<br>200 pts</button>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    📍 Águas Lindas - Ananindeua/PA
+  </footer>
+
+  <script>
+    // Inicializa o mapa
+    function inicializarMapa() {
+    const map = L.map('mapa', { zoomControl: false }).setView([-1.364, -48.374], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map);
+
+    L.marker([-1.364, -48.374]).addTo(map)
+        .bindPopup("Osvaldo Cruz com a quadra 5")
+        .openPopup();
+
+    setTimeout(() => {
+        map.invalidateSize();
+    }, 500);
+    }
+
+    window.addEventListener('load', () => {
+    inicializarMapa();
+    });
+
+    // Botões de curtir
+    document.querySelectorAll('.curtir').forEach(botao => {
+    botao.addEventListener('click', () => {
+        botao.classList.toggle('curtido');
+    });
+    });
+
+    // Faz as mensagens aparecerem uma de cada vez
+    window.addEventListener('load', () => {
+    const mensagens = document.querySelectorAll('.chat2 .mensagem');
+    
+    mensagens.forEach(m => {
+        m.style.display = 'none';
+        m.style.opacity = '0';
+    });
+    let index = 0;
+    
+    function mostrarMensagem() {
+        if (index < mensagens.length) {
+        const msg = mensagens[index];
+        msg.style.display = 'flex';
+        void msg.offsetWidth;
+        msg.style.transition = 'opacity 0.5s ease';
+        msg.style.opacity = '1';
+        index++;
+        setTimeout(mostrarMensagem, 3000);
+        }
+    }
+    setTimeout(mostrarMensagem, 500);
+    });
+
+    // Permite enviar mensagem
+    const form = document.getElementById('chat-form');
+    const chat = document.querySelector('.chat2');
+
+    form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const texto = document.getElementById('mensagem').value.trim();
+    if (texto === '') return;
+
+    const novaMensagem = document.createElement('div');
+    novaMensagem.classList.add('mensagem');
+    novaMensagem.innerHTML = `
+        <img src="image/img4.jpg" class="foto">
+        <div class="balao">${texto}</div>
+        <button class="curtir">👍</button>
+    `;
+
+    chat.insertBefore(novaMensagem, form);
+    document.getElementById('mensagem').value = '';
+    novaMensagem.querySelector('.curtir').addEventListener('click', (btn) => {
+        btn.target.classList.toggle('curtido');
+    });
+    chat.scrollTop = chat.scrollHeight;
+    });
+
+    // Compartilha localização
+    const btnLocalizacao = document.querySelector('.btn-localizacao');
+    btnLocalizacao.addEventListener('click', () => {
+    const chat = document.querySelector('.chat2');
+    
+    const novaMsgMapa = document.createElement('div'); // Criar nova mensagem com mapa
+    novaMsgMapa.classList.add('mensagem', 'mapa-msg');
+    novaMsgMapa.innerHTML = `
+        <img src="image/img4.jpg" class="foto">
+        <div id="mapa-ifpa" class="mapa-pequeno"></div>
+        <div class="botoes">
+        <button class="btn">Ver local</button>
+        <button class="btn-curtir curtir">Valeu 👍</button>
+        </div>
+    `;
+
+    const form = document.getElementById('chat-form'); // Inserir antes do formulário
+    chat.insertBefore(novaMsgMapa, form);
+
+    const map2 = L.map('mapa-ifpa', { zoomControl: false }).setView([-1.4402, -48.4568], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; OpenStreetMap'
+    }).addTo(map2);
+
+    L.marker([-1.4402, -48.4568]).addTo(map2)
+        .bindPopup("IFPA - Av. Almirante Barroso")
+        .openPopup();
+
+    setTimeout(() => {
+        map2.invalidateSize();
+    }, 300);
+
+    novaMsgMapa.querySelector('.curtir').addEventListener('click', (btn) => { // Reativa o botão "curtir"
+        btn.target.classList.toggle('curtido');
+    });
+    chat.scrollTop = chat.scrollHeight;
+    });
+
+    // Envia Reações (testar)
+    const gifs = [
+      "gifs/fig1.gif",
+      "gifs/fig2.gif",
+      "gifs/fig3.gif",
+      "gifs/fig4.gif",
+      "gifs/fig5.gif",
+      "gifs/fig6.gif"
+    ];
+
+    const botoesReacao = document.querySelectorAll('.reacoes .btn-video');
+
+    botoesReacao.forEach((botao, index) => {
+      botao.addEventListener('click', () => {
+        const chat = document.querySelector('.chat2');
+        const gif = gifs[index];
+        const novaMsgGIF = document.createElement('div');
+        novaMsgGIF.classList.add('mensagem', 'video-msg'); 
+
+        novaMsgGIF.innerHTML = `
+          <img src="image/img4.jpg" class="foto">
+          <img src="${gif}" class="video-pequeno">
+          <div class="botoes">
+            <button class="btn-curtir curtir">👍</button>
+          </div>
+        `;
+
+        const form = document.getElementById('chat-form');
+        chat.insertBefore(novaMsgGIF, form);
+
+        // Botão curtir funcional
+        novaMsgGIF.querySelector('.curtir').addEventListener('click', (btn) => {
+          btn.target.classList.toggle('curtido');
+        });
+        chat.scrollTop = chat.scrollHeight;
+      });
+    });
+
+  </script>
+</body>
+</html>
