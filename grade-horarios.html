@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROT EBUS - Rota Presidente Vargas</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+
+<body>
+  <header>
+    <a href="presidente-vargas.html" class="btn-voltar">◀</a>
+    <div class="logo">ROT EBUS</div>
+    <div class="banner">A Sua Plataforma de Ônibus Favorita</div>
+    <nav>Pará › Belém e Região › Águas Lindas</nav>
+  </header>
+
+  <main>
+    <div class="container3">
+      <div id="map2"></div>
+
+      <div class="coluna">
+        <h3>Rota Presidente Vargas</h3>
+        <p>Selecione uma parada para ver os próximos horários:</p>
+        <ul id="paradas"> 
+            <li data-lat="-1.364" data-lon="-48.374">🚏 Osvaldo Cruz com Quadra 3</li>
+            <li data-lat="-1.362" data-lon="-48.375">🚏 Osvaldo Cruz com Quadra 5</li>
+            <li data-lat="-1.360" data-lon="-48.377">🚏 Osvaldo Cruz com Mário Covas</li>
+            <li data-lat="-1.359" data-lon="-48.379">🚏 Osvaldo Cruz com Ceará</li>
+            <li data-lat="-1.358" data-lon="-48.380">🚏 Osvaldo Cruz com São Mateus</li>
+            <li data-lat="-1.357" data-lon="-48.382">🚏 Osvaldo Cruz com Iguaçu</li>
+            <li data-lat="-1.356" data-lon="-48.384">🚏 Osvaldo Cruz com Rua C | Sentido Norte</li>
+            <li data-lat="-1.355" data-lon="-48.385">🚏 Osvaldo Cruz com Rua B</li>
+            <li data-lat="-1.354" data-lon="-48.386">🚏 Osvaldo Cruz com Osvaldão | Sentido Norte</li>
+            <li data-lat="-1.353" data-lon="-48.387">🚏 Osvaldo Cruz com São Mateus | Sentido Norte</li>
+            <li data-lat="-1.352" data-lon="-48.388">🚏 Osvaldo Cruz com Teresina</li>
+            <li data-lat="-1.351" data-lon="-48.389">🚏 Osvaldo Cruz com Ceará | Sentido Norte</li>
+            <li data-lat="-1.350" data-lon="-48.390">🚏 Osvaldo Cruz com Pará | Sentido Norte</li>
+        </ul>
+
+        <div id="info" class="info-box" style="display:none;"></div>
+      </div>
+
+    </div>
+  </main>
+
+   <footer>
+    📍 Águas Lindas - Ananindeua/PA
+  </footer>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    // Inicializa o mapa
+    const map2 = L.map('map2').setView([-1.362, -48.377], 15);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19,
+      attribution: '&copy; OpenStreetMap'
+    }).addTo(map2);
+
+    let marcadorAtual = null;
+
+    // Função pra gerar os próximos horários
+    function gerarHorarios() {
+      const agora = new Date();
+      const horarios = [];
+      for (let i = 0; i < 3; i++) {
+        const h = new Date(agora.getTime() + (i + 1) * 15 * 60000); // +10min cada
+        horarios.push(h.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+      }
+      return horarios;
+    }
+
+    // Evento de clique
+    document.querySelectorAll('#paradas li').forEach(item => {
+      item.addEventListener('click', () => {
+        const lat = parseFloat(item.dataset.lat);
+        const lon = parseFloat(item.dataset.lon);
+
+        // Remove marcador anterior
+        if (marcadorAtual) map2.removeLayer(marcadorAtual);
+
+        // Adiciona novo marcador
+        marcadorAtual = L.marker([lat, lon]).addTo(map2)
+        marcadorAtual = L.marker([lat, lon]).addTo(map2)
+        .bindPopup(`
+            <b>${item.textContent}</b>
+            <div style="margin-top: 5px;">
+            Próximas chegadas:<br>
+            ${gerarHorarios().map(h => `<div style="margin-top: 2px;">🕒 ${h}</div>`).join('')}
+            </div>
+        `)
+        .openPopup();
+
+        map2.setView([lat, lon], 17);
+      });
+    });
+  </script>
+</body>
+</html>
