@@ -1,4 +1,5 @@
-// Insere as sugestões de pesquisa no campo de busca (pág: 1)
+// ---> Funções da Página index.html
+// Insere as sugestões de pesquisa no campo de busca
 const searchInput = document.getElementById('q');
 const helpItems = document.querySelectorAll('.help-item');
 
@@ -9,7 +10,7 @@ helpItems.forEach(item => {
   });
 });
 
-// Deixa todo o bloco das rotas clicável (pág: 1)
+// Deixa todo o bloco das rotas clicável
 document.querySelectorAll('.route-btn').forEach(btn => {
   const link = btn.querySelector('.ver-btn');
   if (link) {
@@ -19,7 +20,7 @@ document.querySelectorAll('.route-btn').forEach(btn => {
   }
 });
 
-// Direciona os botões para as rotas disponíveis (pág: 1)
+// Direciona os botões para as rotas disponíveis
 function scrollAndBlink(id) {
   const elemento = document.getElementById(id);
   elemento.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -28,6 +29,7 @@ function scrollAndBlink(id) {
   elemento.classList.add('flash');
 }
 
+// ---> Funções da Páginas simulador-de-rotas.html
 // Inicializa o mapa centrado em Belém
 const map = L.map('map').setView([-1.455, -48.490], 13);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -38,7 +40,7 @@ let rotaAtual = null;
 let origemMarker = null;
 let destinoMarker = null;
 
-// Calcula a distância e o tempo das rotas (pág: 3)
+// Calcula a distância e o tempo das rotas
 async function calcularTrajeto() {
   const inputs = document.querySelectorAll('.left-panel input');
   let origem = inputs[0].value.trim();
@@ -50,7 +52,7 @@ async function calcularTrajeto() {
     return;
   }
 
-  // 🔍 Adiciona a região automaticamente
+  // Adiciona a região automaticamente
   origem = normalizarBusca(origem);
   destino = normalizarBusca(destino);
 
@@ -72,7 +74,7 @@ async function calcularTrajeto() {
     const lat2 = parseFloat(dataDestino[0].lat);
     const lon2 = parseFloat(dataDestino[0].lon);
 
-    // Remove rota anterior, se existir
+    // Remove a rota anterior, se existir
     if (rotaAtual) map.removeLayer(rotaAtual);
     if (origemMarker) map.removeLayer(origemMarker);
     if (destinoMarker) map.removeLayer(destinoMarker);
@@ -81,7 +83,7 @@ async function calcularTrajeto() {
     origemMarker = L.marker([lat1, lon1]).addTo(map).bindPopup(`Origem: ${origem}`).openPopup();
     destinoMarker = L.marker([lat2, lon2]).addTo(map).bindPopup(`Destino: ${destino}`);
 
-    // Desenha linha azul entre os pontos
+    // Desenha uma linha azul entre os pontos
     rotaAtual = L.polyline([[lat1, lon1], [lat2, lon2]], {
       color: 'blue',
       weight: 5,
@@ -102,38 +104,35 @@ async function calcularTrajeto() {
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     let distanciaKm = R * c;
 
-    // Ajuste do multiplicador conforme a distância "reta"
+    // Calcula a distância e o tempo esperado
     let multiplicador;
     if (distanciaKm < 1.5) {
-      multiplicador = 2.5 + Math.random() * 1.5; // 2.5 - 4.0
+      multiplicador = 2.5 + Math.random() * 1.5;
     } else if (distanciaKm < 6) {
-      multiplicador = 1.6 + Math.random() * 1.2; // 1.6 - 2.8
+      multiplicador = 1.6 + Math.random() * 1.2;
     } else {
-      multiplicador = 1.15 + Math.random() * 0.45; // 1.15 - 1.6
+      multiplicador = 1.15 + Math.random() * 0.45;
     }
     distanciaKm = distanciaKm * multiplicador;
 
-    // velocidade média por faixa
     let velocidadeMedia;
     if (distanciaKm < 2.5) {
-      velocidadeMedia = 9 + Math.random() * 4; // 9-13 km/h
+      velocidadeMedia = 9 + Math.random() * 4;
     } else if (distanciaKm < 8) {
-      velocidadeMedia = 12 + Math.random() * 8; // 12-20
+      velocidadeMedia = 12 + Math.random() * 8;
     } else {
-      velocidadeMedia = 20 + Math.random() * 15; // 20-35
+      velocidadeMedia = 20 + Math.random() * 15;
     }
 
-    // paradas: proporcional mas com teto
-    const paradasPorKm = 0.7; // ~0.7 paradas por km
+    const paradasPorKm = 0.7;
     let paradasEstimadas = Math.round(paradasPorKm * distanciaKm);
-    paradasEstimadas = Math.min(paradasEstimadas, 10); // teto de 10 paradas
-    const tempoPorParadaMin = 0.9 + Math.random() * 1.4; // 0.9 - 2.3 min por parada
-    const tempoParadas = paradasEstimadas * tempoPorParadaMin + 2; // +2 min fixo embarque
+    paradasEstimadas = Math.min(paradasEstimadas, 10);
+    const tempoPorParadaMin = 0.9 + Math.random() * 1.4;
+    const tempoParadas = paradasEstimadas * tempoPorParadaMin + 2;
 
-    // calcula tempo total e exibe
+    // calcula o tempo total e exibe
     const tempoHoras = distanciaKm / velocidadeMedia;
     const minutos = Math.round(tempoHoras * 60 + tempoParadas);
-
     distanciaBox.textContent = `${distanciaKm.toFixed(2)} km`;
     duracaoBox.textContent = `${minutos} min`;
 
@@ -143,14 +142,13 @@ async function calcularTrajeto() {
   }
 }
 
-// 🧭 Função auxiliar para ajustar a busca
+// Função auxiliar para ajustar a busca conforme a região inserida
 function normalizarBusca(local) {
   const texto = local.toLowerCase();
-
-  // se o usuário já escreveu cidade ou estado, mantém
   if (texto.includes('belém') || texto.includes('ananindeua') || texto.includes('pa')) {
     return local;
   }
+
   // palavras que costumam indicar que é Ananindeua
   const palavrasAnanindeua = ['cidade nova', 'maguari', 'icoaraci', 'aguas lindas', 'coqueiro'];
 
@@ -164,7 +162,7 @@ function normalizarBusca(local) {
   return `${local}, Belém, PA`;
 }
 
-// Função para favoritar linha (pág: 3)
+// Função para favoritar linha
 function favoritarLinha() {
   const origem = document.querySelector('#origem').value.trim();
   const destino = document.querySelector('#destino').value.trim();
@@ -189,7 +187,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (btnFavoritar) btnFavoritar.addEventListener('click', favoritarLinha);
 });
 
-// Vizualiza as rotas e paradas próximas
+// Banco de dados das paradas e linhas (pág: 3)
 const locaisInfo = {
   "Osvaldo Cruz": {
     linhas: [
@@ -232,7 +230,7 @@ const locaisInfo = {
   }
 };
 
-// Função para atualizar as caixas
+// Função para atualizar as caixas do lado direito
 function atualizarInfo(local) {
   const linhasBox = document.getElementById("linhas-box");
   const paradasBox = document.getElementById("paradas-box");
