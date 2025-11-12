@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ROT EBUS - Fale Conosco</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="btn-voltar">◀</a>
+    <div class="logo">ROT EBUS</div>
+    <div class="banner">A Sua Plataforma de Ônibus Favorita</div>
+    <nav>Pará › Belém e Região › Águas Lindas</nav>
+  </header>
+
+  <main>
+    <div class="container caixa">
+
+      <!-- Coluna esquerda -->
+      <div class="coluna-esquerda">
+        <img src="image/bot.png" alt="Mascote" class="avatar-esq">
+        <div class="balao">
+          <p>Olá, eu sou a Emz, como posso ajudar meu fã?</p>
+        </div>
+        <p class="descricao">
+          Tire suas dúvidas sobre as linhas, rotas, paradas, horários ou do próprio site
+        </p>
+
+        <div class="faq">
+            <h4>Perguntas Frequentes</h4>
+            <button class="faq-btn">A linha 992 passa na Unama?</button>
+            <button class="faq-btn">Qual linha passa no IFPA?</button>
+            <button class="faq-btn">Como eu vejo os horários?</button>
+        </div>
+      </div>
+
+      <!-- Coluna direita -->
+      <div class="coluna-direita">
+        <div id="chat-area">
+            <div class="mensagem-automatica">
+            <div class="fala">Estamos aqui para qualquer dúvida que tenha e prontos para ajudar no que for preciso</div>
+            <img src="image/bot.png" alt="Mascote" class="avatar-dir">
+            </div>
+        </div>
+
+        <!-- Campo de envio -->
+        <form id="chat-form">
+            <input type="text" id="mensagem" placeholder="Escreva uma mensagem" class="campo-msg" required>
+            <button type="submit" class="btn-enviar">➤</button>
+        </form>
+    </div>
+
+  </main>
+
+  <footer>
+    📍 Águas Lindas - Ananindeua/PA
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+    const form = document.getElementById("chat-form");
+    const input = document.getElementById("mensagem");
+    const chatArea = document.getElementById("chat-area");
+    const faqButtons = document.querySelectorAll(".faq-btn");
+
+    // Função principal de resposta automática
+    form.addEventListener("submit", function(e) {
+        e.preventDefault();
+        const texto = input.value.trim();
+        if (texto === "") return;
+
+        const msgUser = document.createElement("div");
+        msgUser.classList.add("msg-usuario");
+        msgUser.textContent = texto;
+        chatArea.appendChild(msgUser);
+        chatArea.scrollTop = chatArea.scrollHeight;
+
+        input.value = "";
+
+        setTimeout(() => {
+        const resposta = document.createElement("div");
+        resposta.classList.add("msg-bot");
+        resposta.innerHTML = gerarResposta(texto);
+        chatArea.appendChild(resposta);
+        chatArea.scrollTop = chatArea.scrollHeight;
+        }, 600);
+    });
+
+    // Função para gerar resposta simples
+    function gerarResposta(msg) {
+        msg = msg.toLowerCase();
+        if (msg.includes("unama")) return "Sim, A linha 992 passa na Unama.";
+        if (msg.includes("ifpa")) return "As linhas 909 e 917 passam pelo IFPA.";
+        if (msg.includes("horário")) return "Você deve selecionar uma linha na página inicial e depois clicar em <strong>ver grade completa</strong>.";
+        if (msg.includes("oi") || msg.includes("olá")) return "Olá! 😄 Como posso te ajudar hoje?";
+        return "Entendi! Nossa equipe vai analisar sua mensagem.";
+    }
+
+    // Quando clicar nas perguntas, o texto vai pro campo de mensagem
+    faqButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
+        input.value = btn.textContent;
+        input.focus();
+        });
+    });
+    });
+  </script>
+</body>
+</html>
