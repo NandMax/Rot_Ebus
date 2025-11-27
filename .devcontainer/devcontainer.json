@@ -1,0 +1,11 @@
+{
+  "name": "Meu Codespace",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:latest",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ritwickdey.liveserver"
+      ]
+    }
+  }
+}
