@@ -63,7 +63,8 @@ header nav {
   margin: 22px auto;
   padding: 20px;
   display: grid;
-  grid-template-columns: 2fr 1fr;
+  grid-template-columns: 1fr 380px;
+  /*grid-template-columns: 2fr 1fr;*/
   gap: 20px
 }
 
