@@ -1,13 +1,14 @@
-/*----------Página Inicial----------*/
+/*=========Página Inicial=========*/
 :root {
   --blue: #0b57b7;
+  --azul: #4a75d3;
+  --blue-escuro: #083c82;
+  --blue-dark: rgb(34, 34, 84);
+  --blue-light: rgb(178, 229, 230);
+  --branco: #dee2e8;
   --light: #f6f8fb;
-  --muted: #6c7a89;
-  --card: #ffffff;
-  --accent: #e6f1ff;
-  --panel: #f0f6ff;
-  --rounded: 14px;
-  --gap: 18px;
+  --gray: #6c7a89;
+  --gray-dark: #333; 
   font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
@@ -22,19 +23,19 @@ html, body {
 body {
   margin: 0;
   background: linear-gradient(180deg, var(--light), #fff);
-  color: #113;
+  color: var(--blue-dark);
   display: flex;
   flex-direction: column;
 }
 
 main{
-flex: 1;
+  flex: 1;
 }
 
-/*  Cabeçalho   */
+/* Cabeçalho */
 header {
   background: var(--blue);
-  color: #fff;
+  color: var(--light);
   padding: 12px 20px;
   display: flex;
   align-items: center;
@@ -43,7 +44,7 @@ header {
 
 header .logo {
   font-weight: 700;
-  background: #052f73;
+  background: var(--blue-dark);
   padding: 8px 12px;
   border-radius: 6px
 }
@@ -54,7 +55,7 @@ header .banner{
 
 header nav {
   margin-left: auto;
-  color: #dbe8ff;
+  color: var(--light);
   font-size: 14px
 }
 
@@ -64,11 +65,10 @@ header nav {
   padding: 20px;
   display: grid;
   grid-template-columns: 1fr 380px;
-  /*grid-template-columns: 2fr 1fr;*/
   gap: 20px
 }
 
-/*---Coluna Esquerda---*/
+/*-----Coluna Esquerda-----*/
 .left {
   display: grid;
   grid-template-columns: 1fr;
@@ -76,20 +76,23 @@ header nav {
 }
 
 .card {
-  background: var(--card);
   border-radius: 12px;
-  border: 1px solid rgba(16, 24, 40, 0.06);
-  box-shadow: 0 6px 18px rgba(12, 30, 60, 0.04)
+  border: 2px solid rgba(16, 24, 40, 0.06);
+  box-shadow: 0 6px 18px rgba(12, 30, 60, 0.04);
+  background: var(--light);
+  border-radius: 12px;
+  padding: 15px;
+  flex: 1;
 }
 
 .card h3 {
-  color: #0b2b48;
+  color: var(--blue-dark);
   padding-left: 10px;
   padding-right: 10px;
 }
 
 .muted {
-  color: var(--muted);
+  color: var(--gray);
   font-size: 14px;
   padding-left: 10px;
   padding-right: 10px;
@@ -108,10 +111,11 @@ header nav {
 
 .msg-preview{
   padding: 10px 10px 10px 10px;
-  border: 1px solid #e6ecf4;
+  border: 1px solid var(--branco);
   overflow: hidden;
   height: 150px;
   position: relative;
+  width: 90%;
 }
 
 .msg-list {
@@ -124,10 +128,10 @@ header nav {
 .msg{
   display: flex;
   align-items: center;
-  background: #f6f8fb;
+  background: var(--light);
   padding: 8px;
   border-radius: 12px;
-  border: 1px solid #e6ecf4;
+  border: 1px solid var(--branco);
   font-size: 13px;
   margin-bottom: 8px;
 }
@@ -142,7 +146,7 @@ header nav {
   height: 32px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid #d9e1ec;
+  border: 1px solid var(--branco);
   margin-right: 1%;
 }
 
@@ -153,7 +157,7 @@ header nav {
 
 .btn{
   background: var(--blue);
-  color: #fff;
+  color: var(--light);
   padding: 9px 12px;
   border-radius: 10px;
   text-decoration: none; 
@@ -165,31 +169,16 @@ header nav {
   display: inline-block;
 }
 
-.btn-ghost{
-  background:transparent;
-  border:1px solid #dbe6f7;
-  padding:9px 12px;
-  border-radius:10px;
-  cursor:pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
-}
-
 .btn:hover, .ver-btn:hover{
-background: #083c82;
-transform: scale(1.05);
-}
-
-.btn-ghost:hover {
-background: #0b57b7; 
-color: #fff;
-transform: scale(1.05);
+  background: var(--blue-escuro);
+  transform: scale(1.05);
 }
 
 .feedback{
   margin-left: 10px;
 }
 
-/*---Coluna Direita---*/
+/*-----Coluna Direita-----*/
 .right {
   display: flex;
   flex-direction: column;
@@ -217,19 +206,19 @@ transform: scale(1.05);
 }
 
 .ver-btn {
-background: #0b57b7;
-color: white;
-padding: 8px 12px;
-border-radius: 8px;
-text-decoration: none;
-font-weight: 600;
-font-size: 13px;
-transition: background 0.2s;
-margin-left: 5%;
+  background: var(--blue);
+  color: var(--branco);
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  transition: background 0.2s;
+  margin-left: 5%;
 }
 
 .ver-btn:hover {
-background: #083c82;
+ background: var(--blue-escuro);
 }
 
 .route-btn {
@@ -245,36 +234,25 @@ background: #083c82;
 }
 
 .route-btn:hover {
-background: #e8f1ff;
-transform: scale(1.02);
-box-shadow: 0 4px 10px rgba(11, 87, 183, 0.3);
+  background: var(--light);
+  transform: scale(1.01);
+  box-shadow: 0 4px 10px rgba(11, 87, 183, 0.3);
 }
 
 .bus {
-  background: var(--panel);
+  background: var(--branco);
   padding: 8px;
   border-radius: 8px;
   font-size: 25px;
   font-weight: 600
 }
 
-@keyframes flashBlue {
-0% {
-  color: inherit;
-  text-shadow: none;
-}
-50% {
-  color: #2563eb;
-  text-shadow: 0 0 8px rgba(37,99,235,0.6);
-}
-100% {
-  color: inherit;
-  text-shadow: none;
-}
+@keyframes flash{
+  20% {color: red}
 }
 
 .flash {
-animation: flashBlue 5s ease-in-out 1;
+  animation: flash 5s ease-in-out 1;
 }
 
 /* Campo de Pesquisa */
@@ -287,7 +265,7 @@ animation: flashBlue 5s ease-in-out 1;
 .search input {
   padding: 10px;
   border-radius: 10px;
-  border: 1px solid #dbe6f7
+  border: 1px solid var(--branco)
 }
 
 .help-list {
@@ -297,37 +275,36 @@ animation: flashBlue 5s ease-in-out 1;
 }
 
 .help-item {
-  background: #eef6ff;
+  background: var(--light);
   border-radius: 999px;
   padding: 8px 12px;
   font-size: 14px;
-  border: 1px solid #dceffc;
+  border: 1px solid var(--branco);
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 .help-item:hover {
-  background: #d1d5db;
+  background: var(--blue-light)
 }
 
 input#q {
-transition: all 0.3s ease;
-outline: none;
+  transition: all 0.3s ease;
+  outline: none;
 }
 
 input#q:focus {
-border-color: #3b82f6; /* azul */
-box-shadow: 0 0 8px rgba(59,130,246,0.4);
-transform: scale(1.02);
+  border-color: #3b82f6;
+  box-shadow: 0 0 8px rgba(59,130,246,0.4);
 }
 
 /* Painel de notícias */
 .sem-avisos img {
-width: 50%;
-opacity: 0.9;
-margin-top: 0px;
-border-radius: 50%;
-display: block;
+  width: 50%;
+  opacity: 0.9;
+  margin-top: 0px;
+  border-radius: 50%;
+  display: block;
 }
 
 .aviso {
@@ -337,7 +314,7 @@ display: block;
 }
 
 .aviso .item {
-  background: #eef6ff;
+  background: var(--branco);
   padding: 12px;
   border-radius: 10px;
   display: flex;
@@ -357,7 +334,6 @@ display: block;
   animation: pulse 1s ease-in-out infinite;
 }
 
-
 @keyframes pulse {
 0%, 100% {
   text-shadow: 0 0 3px #ff6600, 0 0 8px #ffcc00;
@@ -367,6 +343,21 @@ display: block;
 }
 }
 
+.btn-ghost{
+  background:transparent;
+  border:1px solid var(--branco);
+  padding:9px 12px;
+  border-radius:10px;
+  cursor:pointer;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.btn-ghost:hover {
+  background: var(--blue); 
+  color: var(--branco);
+  transform: scale(1.05);
+ }
+
 .atalho{
   display:flex;
   gap:8px;
@@ -374,12 +365,12 @@ display: block;
   margin-top:8px
 }
 
-/*  Rodapé   */
+/* Rodapé */
 footer {
   text-align: center;
   background: var(--blue);
   padding: 12px 20px;
-  color: var(--card);
+  color: var(--light);
   font-size: 14px;
 }
 
@@ -395,11 +386,12 @@ footer {
 }
 
 
-/*----------Presidente Vargas----------*/
+/*=========Presidente-Vargas.html=========*/
+/* Serve para todas as linhas de onibus */
 .btn-voltar {
   display: inline-block;
-  background-color: #1e40af;
-  color: white;
+  background-color: var(--blue-escuro);
+  color: var(--light);
   padding: 4px 10px;
   border-radius: 8px;
   text-decoration: none;
@@ -410,13 +402,12 @@ footer {
 
 .btn-voltar:hover {
   transform: scale(1.1);
-  background-color: #2563eb;
+  background-color: var(--blue-dark);
 }
 
 .container2 {
   width: 80%;
   margin: 20px auto;
-  background: white;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
@@ -445,9 +436,9 @@ footer {
 }
 
 .map-section .search{
-    flex-direction: row;
-    margin-top: 2%;
-    height: 42px;
+  flex-direction: row;
+  margin-top: 2%;
+  height: 42px;
 }
 
 .map-section .search input, .map-section .search .btn {
@@ -474,11 +465,7 @@ footer {
 }
 
 .card {
-  flex: 1;
-  background: #f9fafb;
-  border-radius: 12px;
-  padding: 15px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  
 }
 
 .card .dados {
@@ -486,7 +473,7 @@ footer {
   justify-content: space-between;
   align-items: center;
   gap: 15px;
-  background: #f3f4f6;
+  background: var(--branco);
   border-radius: 8px;
   padding: 8px 12px;
   font-size: 14px;
@@ -504,6 +491,7 @@ footer {
   justify-content: space-between;
   gap: 10px;
   margin-bottom: 10px;
+  margin-left: 5px;
 }
 
 .saidas, .pontos {
@@ -532,7 +520,7 @@ footer {
   }
 }
 
-/*---------- Simulador de Rotas----------*/
+/*=========Simulador-de-Rotas=========*/
 .map-section2 {
   display: flex;
   justify-content: space-between;
@@ -548,7 +536,6 @@ footer {
 
 .left-panel, .right-panel {
   width: 22%;
-  background: var(--light-gray);
   border-radius: 10px;
   padding: 15px;
   display: flex;
@@ -577,13 +564,13 @@ footer {
 select, input {
   padding: 8px;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--branco);
   font-size: 12px;
   outline: none;
 }
 
 .info-box {
-  background: white;
+  background: var(--light);
   border-radius: 8px;
   padding: 10px;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
@@ -596,7 +583,7 @@ select, input {
 }
 
 .saved-lines li {
-  background: #fff;
+  background: var(--branco);
   padding: 6px 8px;
   border-radius: 6px;
   box-shadow: 0 1px 2px rgba(0,0,0,0.1);
@@ -610,7 +597,6 @@ select, input {
   border: none;
   padding: 8px;
   border-radius: 8px;
-  color: white;
   font-weight: bold;
   cursor: pointer;
 }
@@ -622,7 +608,7 @@ select, input {
   margin-top: 0;
 }
 
-/*---------- Grade de Horários----------*/
+/*=========Grade-Horários.html=========*/
 .container3 {
   display: flex;
   overflow: hidden;
@@ -635,11 +621,11 @@ select, input {
 .coluna {
   width: 50%;
   padding: 10px;
-  background-color: #f5f7ff;
+  background-color: var(--light);
   padding-left: 10px;
   border-width: 4px;
   border-style: solid;
-  border-color: #3b83f697;
+  border-color: var(--blue);
   height: 90%;
   overflow-y: auto;
   box-sizing: border-box;
@@ -648,12 +634,12 @@ select, input {
 
 #map2{
   border-style: solid;
-  border-color: #39404b80;
+  border-color: var(--gray);
   height: 90%;
 }
 
 .coluna h3 {
-  color: rgb(7, 77, 241);
+  color: var(--blue);
   font-size: 18px;
   margin-top: 0;
   margin-bottom: 0;
@@ -671,7 +657,6 @@ select, input {
 }
 
 .coluna li {
-  background: white;
   margin: 6px 0;
   padding: 8px;
   border-radius: 8px;
@@ -682,20 +667,20 @@ select, input {
 }
 
 li:hover {
-  background: #dce3ff;
+  background: var(--blue-light);
 }
 
 .info-box {
-  background: white;
+  background: var(--light);
   border-radius: 8px;
   padding: 10px;
   border: 1px solid #ccc;
 }
 
-/*----------Contato----------*/
+/*=========Contato.html=========*/
 .caixa {
   display: flex;
-  background: #d8e0ff;
+  background: var(--branco);
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
@@ -719,7 +704,7 @@ li:hover {
 }
 
 .balao {
-  background: white;
+  background: var(--light);
   border-radius: 12px;
   padding: 10px;
   font-size: 14px;
@@ -731,14 +716,14 @@ li:hover {
 .descricao {
   font-size: 13px;
   text-align: center;
-  color: #222;
+  color: var(--gray-dark);
   margin-top: 0;
   margin-bottom: 0;
   padding: 5px 20px 5px 20px;
 }
 
 .formulario {
-  background: #e5e9f2;
+  background: var(--light);
   border-radius: 12px;
   padding: 10px;
   width: 90%;
@@ -748,7 +733,7 @@ li:hover {
 
 .formulario h4 {
   font-size: 13px;
-  color: #333;
+  color: var(--gray-dark);
   margin-bottom: 10px;
 }
 
@@ -759,12 +744,12 @@ li:hover {
   padding: 8px;
   border-radius: 10px;
   border: none;
-  background: #dcdcdc;
+  background: var(--branco);
 }
 
 .formulario button {
-  background: #0056d2;
-  color: white;
+  background: var(--blue);
+  color: var(--light);
   border: none;
   padding: 8px 15px;
   border-radius: 10px;
@@ -772,11 +757,11 @@ li:hover {
 }
 
 .formulario button:hover {
-  background: #0041a8;
+  background: var(--blue-escuro);
 }
 
 .coluna-direita {
-  background: #4a75d3;
+  background: var(--azul);
   border-radius: 12px;
   padding: 15px;
   justify-content: space-between;
@@ -796,7 +781,7 @@ li:hover {
 }
 
 .fala {
-  background: white;
+  background: var(--light);
   border-radius: 8px;
   padding: 8px 10px;
   font-size: 13px;
@@ -812,15 +797,14 @@ li:hover {
   flex-direction: column;
   gap: 10px;
   padding: 10px;
-  background: #4a75d3;
+  background: var(--azul);
   border-radius: 12px;
   min-height: 300px;
 }
 
 .msg-usuario {
   align-self: flex-start;
-  background: #92dffb;
-  color: #222;
+  background: var(--blue-light);
   padding: 8px 10px;
   border-radius: 8px;
   max-width: 70%;
@@ -829,7 +813,7 @@ li:hover {
 
 .msg-bot {
   align-self: flex-end;
-  background: #e6ecff;
+  background: var(--light);
   padding: 8px 10px;
   border-radius: 8px;
   max-width: 70%;
@@ -862,8 +846,8 @@ li:hover {
 .btn-enviar {
   padding: 10px 16px;
   border: none;
-  background-color: #007bff;
-  color: white;
+  background-color: var(--blue);
+  color: var(--light);
   border-radius: 10px;
   font-size: 18px;
   cursor: pointer;
@@ -873,12 +857,12 @@ li:hover {
 }
 
 .btn-enviar:hover {
-  background: #003f9e;
+  background: var(--blue-dark);
 }
 
-/*---------Bot---------*/
+/*---------Bot-Duvida.html---------*/
 .faq {
-  background: #e5e9f2;
+  background: var(--light);
   border-radius: 12px;
   padding: 15px;
   width: 90%;
@@ -889,7 +873,7 @@ li:hover {
 
 .faq h4 {
   font-size: 14px;
-  color: #222;
+  color: var(--gray-dark);
   font-weight: bold;
   margin-bottom: 12px;
   margin-top: 0;
@@ -898,30 +882,30 @@ li:hover {
 .faq-btn {
   display: block;
   width: 100%;
-  background: #cbe1f9;
+  background: #b8d4f3;
+  color: var(--gray-dark);
   border: none;
   border-radius: 20px;
   padding: 8px;
   margin: 5px 0;
   cursor: pointer;
-  color: #021a41;
   font-weight: 500;
   font-size: 13px;
   transition: background 0.2s;
 }
 
 .faq-btn:hover {
-  background: #b8d4f3;
+  background: var(--blue-light);
 }
 
-/*----------Chat Online-----------*/
+/*=========Chat-Online.html=========-*/
 .container4 {
   display: flex;
   background: #e5e9f2;
   color: #000;
   margin: 0 20px;
   border-radius: 5px;
-  max-width: 90%;
+  width: 80%;
   margin: 22px auto;
   gap: 20px;
   height: 600px;
@@ -929,7 +913,7 @@ li:hover {
 
 .coluna-esq, .coluna-dir {
   width: 20%;
-  background: #103daecd;
+  background: var(--azul);
   color: white;
   padding: 10px;
   border-radius: 5px;
@@ -947,7 +931,7 @@ li:hover {
 .ranking .pessoa {
   display: flex;
   align-items: center;
-  background: #daf0f5;
+  background: var(--light);
   margin: 5px 0;
   border-radius: 5px;
   padding: 5px;
@@ -991,7 +975,7 @@ li:hover {
   background: #f1f1f1;
   border-radius: 5px;
   width: 60%;
-  max-height: 580px;
+  max-height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -1010,7 +994,7 @@ li:hover {
 }
 
 .balao {
-  background: white;
+  background: var(--light);
   padding: 10px;
   border-radius: 10px;
   max-width: 60%;
@@ -1018,7 +1002,7 @@ li:hover {
 
 .curtir {
   border: none;
-  background: #e0e0e0;
+  background: var(--branco);
   cursor: pointer;
   font-size: 18px;
   transition: all 0.2s ease;
@@ -1028,7 +1012,6 @@ li:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-
 }
 
 .curtir:hover {
@@ -1037,7 +1020,7 @@ li:hover {
 }
 
 .curtir.curtido {
-  background: #007bff;
+  background: var(--azul);
   color: white;
   transform: scale(1.05);
 }
@@ -1074,7 +1057,7 @@ li:hover {
 }
 
 .mensagem.mapa-msg {
-  display: flex !important;
+  display: flex;
   flex-direction: row;
   align-items: flex-start;
   gap: 10px;
@@ -1099,7 +1082,7 @@ li:hover {
 
 #chat-form {
   display: flex;
-  background: white;
+  background: var(--light);
   border-radius: 5px;
   margin-top: auto;
   gap: 10px
@@ -1126,7 +1109,7 @@ li:hover {
 
 .coluna-dir p{ 
   font-size: 12px;
-  color: #efd5d5;
+  color: var(--light);
 }
 
 .coluna-dir h3{
@@ -1136,8 +1119,7 @@ li:hover {
 .btn-localizacao {
   display: block;
   width: 100%;
-  background-color: #fafbfd;
-  color: white;
+  background-color: var(--light);
   border: none;
   border-radius: 8px;
   padding: 10px 0;
@@ -1170,7 +1152,7 @@ li:hover {
   border: none;
   border-radius: 8px;
   padding: 10px;
-  background: white;
+  background: var(--light);
   cursor: pointer;
 }
 
@@ -1179,7 +1161,7 @@ li:hover {
   align-items: flex-start;
   gap: 8px;
   width:70%;
-  background: #fff;
+  background: var(--light);
   padding: 10px;
   border-radius: 8px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
