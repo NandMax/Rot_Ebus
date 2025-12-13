@@ -3,8 +3,8 @@
   --blue: #0b57b7;
   --azul: #4a75d3;
   --blue-escuro: #083c82;
-  --blue-dark: rgb(35, 35, 87);
-  --blue-light: rgb(178, 229, 230);
+  --blue-dark: rgb(35, 35, 87); /*#232357*/
+  --blue-light: rgb(178, 229, 230); /*#b2e5e6*/
   --branco: #dee2e8;
   --light: #f6f8fb;
   --gray: #6c7a89;
@@ -597,7 +597,7 @@ select, input {
   cursor: pointer;
 }
 
-.apps-btns .uber { background: black; }
+.apps-btns .uber { background: black; color: white}
 .apps-btns .nove { background: #ffcc00; color: black; }
 
 .titulo-h5{
