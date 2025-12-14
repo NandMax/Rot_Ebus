@@ -1318,3 +1318,9 @@ li:hover {
     cursor: pointer;
   }
 }
+
+@media (min-width: 861px) {
+  .modal-coluna .btn-fechar {
+    display: none;
+  }
+}

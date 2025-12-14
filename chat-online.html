@@ -291,22 +291,29 @@
     });
     
     // Mover colunas para modais em telas menores
+    const colunaEsq = document.querySelector('.coluna-esq');
+    const colunaDir = document.querySelector('.coluna-dir');
+    const container4 = document.querySelector('.container4');
+
     function abrirModalMobile() {
+      const modalEsqConteudo = document.querySelector('.conteudo-modal-esq');
+      const modalDirConteudo = document.querySelector('.conteudo-modal-dir');
+
       if (window.innerWidth <= 860) {
-        const colunaEsq = document.querySelector('.coluna-esq');
-        const colunaDir = document.querySelector('.coluna-dir');
-
-        const modalEsqConteudo = document.querySelector('.conteudo-modal-esq');
-        const modalDirConteudo = document.querySelector('.conteudo-modal-dir');
-
-        modalEsqConteudo.appendChild(colunaEsq);
-        modalDirConteudo.appendChild(colunaDir);
+        // move para modal
+        if (!modalEsqConteudo.contains(colunaEsq)) modalEsqConteudo.appendChild(colunaEsq);
+        if (!modalDirConteudo.contains(colunaDir)) modalDirConteudo.appendChild(colunaDir);
+      } else {
+        // volta para o container principal
+        if (!container4.contains(colunaEsq)) container4.insertBefore(colunaEsq, container4.firstChild);
+        if (!container4.contains(colunaDir)) container4.appendChild(colunaDir);
       }
     }
 
-    // Rodar no load
+    // Rodar no load e resize
     window.addEventListener('load', abrirModalMobile);
     window.addEventListener('resize', abrirModalMobile);
+
 
     // Abrir e fechar modais
     const btnRanking = document.getElementById('btn-ranking');
