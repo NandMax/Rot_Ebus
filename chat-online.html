@@ -117,6 +117,22 @@
     </aside>
   </main>
 
+   <div class="chat-buttons">
+      <button id="btn-ranking" class="btn-modal">Visualizar Ranking Semanal</button>
+      <button id="btn-reacoes" class="btn-modal">Enviar Reações/Localização</button>
+    </div>
+
+    <!-- Blocos Responsivos -->
+   <div id="modal-esquerda" class="modal-coluna">
+      <button class="btn-fechar">✖</button>
+      <div class="conteudo-modal-esq"></div>
+    </div>
+
+    <div id="modal-direita" class="modal-coluna">
+      <button class="btn-fechar">✖</button>
+      <div class="conteudo-modal-dir"></div>
+    </div>
+
   <footer>
     📍 Águas Lindas - Ananindeua/PA
   </footer>
@@ -272,6 +288,42 @@
         });
         chat.scrollTop = chat.scrollHeight;
       });
+    });
+    
+    // Mover colunas para modais em telas menores
+    function abrirModalMobile() {
+      if (window.innerWidth <= 860) {
+        const colunaEsq = document.querySelector('.coluna-esq');
+        const colunaDir = document.querySelector('.coluna-dir');
+
+        const modalEsqConteudo = document.querySelector('.conteudo-modal-esq');
+        const modalDirConteudo = document.querySelector('.conteudo-modal-dir');
+
+        modalEsqConteudo.appendChild(colunaEsq);
+        modalDirConteudo.appendChild(colunaDir);
+      }
+    }
+
+    // Rodar no load
+    window.addEventListener('load', abrirModalMobile);
+    window.addEventListener('resize', abrirModalMobile);
+
+    // Abrir e fechar modais
+    const btnRanking = document.getElementById('btn-ranking');
+    const btnReacoes = document.getElementById('btn-reacoes');
+    const modalEsq = document.getElementById('modal-esquerda');
+    const modalDir = document.getElementById('modal-direita');
+
+    btnRanking.addEventListener('click', () => { modalEsq.style.display = 'block'; });
+    btnReacoes.addEventListener('click', () => { modalDir.style.display = 'block'; });
+
+    document.querySelectorAll('.btn-fechar').forEach(btn => {
+      btn.addEventListener('click', () => { btn.parentElement.style.display = 'none'; });
+    });
+
+    window.addEventListener('click', (e) => {
+      if (e.target === modalEsq) modalEsq.style.display = 'none';
+      if (e.target === modalDir) modalDir.style.display = 'none';
     });
 
   </script>

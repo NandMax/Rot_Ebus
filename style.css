@@ -344,6 +344,11 @@ input#q:focus {
 }
 }
 
+/* Painel de Atalhos */
+.atalhos{
+  display: none;
+}
+
 .btn-ghost{
   background:transparent;
   border:1px solid var(--branco);
@@ -381,9 +386,18 @@ footer {
       padding: 12px
   }
 
-  .right {
-      order: 2
+  .left, .right {
+    display: contents;
   }
+
+  .atalhos{
+    display: block;
+  } 
+
+  .bloco1{ order: 1;}
+  .bloco2{ order: 2;}
+  .bloco3{ order: 3;}
+  .bloco4{ order: 4;}
 }
 
 
@@ -510,9 +524,12 @@ footer {
   padding: 4px 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .info-section {
     flex-direction: column;
+  }
+  .saidas-blocos, .pontos-blocos {
+    margin-left: 0;
   }
 }
 
@@ -522,7 +539,6 @@ footer {
   justify-content: space-between;
   gap: 20px;
   padding: 15px;
-  min-height: calc(100vh - 200px);
   margin-bottom: 20px;
 }
 
@@ -604,11 +620,34 @@ select, input {
   margin-top: 0;
 }
 
+@media (max-width: 1100px) {
+ .map-section2 {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .map-container {
+    order: 1;
+    width: 90%;
+    min-height: 400px;
+  }
+
+  .left-panel {
+    order: 2;
+    width: 100%;
+  }
+
+  .right-panel {
+    order: 3;
+    width: 100%;
+  }
+}
+
 /*=========Grade-Horários.html=========*/
 .container3 {
   display: flex;
   overflow: hidden;
-  width: 80%;
+  width: 90%;
   height: 100%;
   margin: 22px auto;
   gap: 10px;
@@ -673,6 +712,35 @@ li:hover {
   border: 1px solid #ccc;
 }
 
+@media (max-width: 860px) {
+  .container3 {
+    flex-direction: column;
+    width: 90%;
+    padding: 0 12px;
+    padding-bottom: 40px;
+  }
+
+  #map2 {
+    order: 1;
+    min-height: 350px;
+  }
+
+  .coluna {
+    width: 100%;
+    order: 2;
+  }
+
+  #paradas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+  }
+
+  #paradas li{
+    margin-bottom: 0;
+  }
+}
+
 /*=========Contato.html=========*/
 .caixa {
   display: flex;
@@ -680,7 +748,7 @@ li:hover {
   border-radius: 8px;
   padding: 20px;
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
-  height: 700px;
+  margin-top: 50px;
 }
 
 .coluna-esquerda, .coluna-direita {
@@ -854,6 +922,21 @@ li:hover {
 
 .btn-enviar:hover {
   background: var(--blue-dark);
+}
+
+@media (max-width: 860px) {
+  .caixa {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .coluna-esquerda, .coluna-direita {
+    width: 100%;
+  }
+
+  .coluna-esquerda{
+    margin-bottom: 20px;
+  }
 }
 
 /*---------Bot-Duvida.html---------*/
@@ -1174,4 +1257,64 @@ li:hover {
   display: flex;
   gap: 6px;
   margin-top: 8px;
+}
+
+.chat-buttons {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .coluna-esq, .coluna-dir {
+    width: 100%;
+  }
+
+  .chat-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    margin-top: 10px;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+  }
+
+  .chat-buttons .btn-modal {
+    padding: 10px 20px;
+    border-radius: 8px;
+    background: #4a75d3;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .modal-coluna {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-height: 80%;
+    overflow-y: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    z-index: 2000;
+    padding: 15px;
+  }
+
+  .modal-coluna .btn-fechar {
+    display: block;
+    margin-left: auto;
+    margin-bottom: 10px;
+    background: #ff4c4c;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+  }
 }

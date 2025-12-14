@@ -17,27 +17,27 @@
 
   <main class="container">
     <section class="left"> <!--Bloco Esquerdo-->
-      <div class="card" id="titulo">
+      <div class="card bloco1" id="titulo">
         <h2>Linhas de ônibus - Águas Lindas</h2>
         <p class="muted">Confira as rotas disponíveis da nossa cidade</p>
       </div>
 
-      <div class="card">
+      <div class="card bloco1">
         <h3>Seja bem vindo a nossa plataforma</h3>
         <p class="muted">Aqui você encontrará as melhores rotas para o seu destino de forma prática e rápida. Escolha uma linha para verificar seus horários, horários, pontos de paradas e outras informações.</p>
       </div>
 
-      <div class="card">
+      <div class="card bloco1">
         <h3>Conheça as linhas</h3>
         <p class="muted">O Bairro de Águas Lindas conta com 4 linhas de ônibus disponíveis que abrangem a região de Belém, Ananindeua e Entroncamento.</p>
       </div>
 
-      <div class="card">
+      <div class="card bloco1">
         <h3>Horários em tempo real</h3>
         <p class="muted">Consulte o nosso site para visualizar os horários em tempo real do seu ônibus, bem como alertas sobre as mudanças de rotas, atrasos, acidentes e engarrafamento.</p>
       </div>
 
-      <div class="card chat">
+      <div class="card chat bloco3">
         <h3>Conheça o nosso chat online</h3>
         <p class="muted">Interaja e converse com outras pessoas que utilizam a mesma linha de ônibus que a sua.</p>
         <div class="msg-preview">
@@ -74,7 +74,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card bloco4">
         <h3>Notou algum erro?</h3>
         <p class="muted">Caso encontre alguma falha ou deseje sugerir alguma melhoria para nosso site, entre em contato com a gente. Aguardamos atenciosamente para qualquer dúvida em questão.</p>
         <div><a href="contato.html" class="btn feedback">Enviar feedback</a></div>
@@ -82,7 +82,7 @@
     </section> <!--Fim do Bloco Esquerdo-->
 
     <aside class="right"> <!--Bloco Direito-->
-      <div class="card">
+      <div class="card bloco2">
         <div id="titulo-direito" class="titulo-direito">
           <strong> Clique em uma rota para ver os horários e os pontos de paradas</strong>
           <div class="bus">🚌</div>
@@ -124,7 +124,7 @@
         </div>
       </div>
 
-      <div class="card search">
+      <div class="card search bloco2">
         <label for="q"><strong>Não achou sua rota? Pesquise aqui</strong></label>
         <input id="q" placeholder="Pesquisar linha ou ponto..." />
         <div class="help-list">
@@ -136,7 +136,7 @@
         <div><a href="bot-duvida.html" class="btn">Tire sua dúvida com o nosso bot</a></div>
       </div>
 
-      <div class="card">
+      <div class="card bloco3">
         <h3>Quadro de Avisos 📢</h3>
         <div class="aviso">
           <div class="item">
@@ -151,11 +151,12 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card bloco1 atalhos">
         <h3>Atalhos</h3>
         <div class="atalho">
-          <button class="btn-ghost" onclick="scrollAndBlink('titulo-direito')">Mapa de Rotas</button>
-          <button class="btn-ghost" onclick="scrollAndBlink('titulo-direito')">Horários</button>
+          <button class="btn-ghost" onclick="scrollAndBlink('titulo-direito')">Rotas e Horários</button>
+          <button class="btn-ghost"  onclick="location.href='bot-duvida.html'">Bot de Dúvidas</button>
+          <button class="btn-ghost" onclick="location.href='chat-online.html'">Chat Online</button>
           <button class="btn-ghost" onclick="location.href='contato.html'">Contato</button>
         </div>
       </div>
