@@ -1,4 +1,5 @@
 // ---> Funções da Página index.html
+
 // Insere as sugestões de pesquisa no campo de busca
 const searchInput = document.getElementById('q');
 const helpItems = document.querySelectorAll('.help-item');
