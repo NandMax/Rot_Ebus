@@ -59,9 +59,25 @@ async function calcularTrajeto() {
   try {
 
     const areaPA = "&countrycodes=br&viewbox=-52,-0.5,-47,-2.0&bounded=1";
-    const resOrigem = await fetch(`https://nominatim.openstreetmap.org/search?format=json${areaPA}&q=${encodeURIComponent(origem)}`);
+    //const resOrigem = await fetch(`https://nominatim.openstreetmap.org/search?format=json${areaPA}&q=${encodeURIComponent(origem)}`);
+    //const dataOrigem = await resOrigem.json();
+    //const resDestino = await fetch(`https://nominatim.openstreetmap.org/search?format=json${areaPA}&q=${encodeURIComponent(destino)}`);
+    //const dataDestino = await resDestino.json();
+
+    const headers = {
+      "User-Agent": "RotEbus/1.0 (contato@rotebus.com)"
+    };
+
+    const resOrigem = await fetch(
+    `https://nominatim.openstreetmap.org/search?format=json${areaPA}&q=${encodeURIComponent(origem)}`,
+      { headers }
+    );
     const dataOrigem = await resOrigem.json();
-    const resDestino = await fetch(`https://nominatim.openstreetmap.org/search?format=json${areaPA}&q=${encodeURIComponent(destino)}`);
+
+    const resDestino = await fetch(
+      `https://nominatim.openstreetmap.org/search?format=json${areaPA}&q=${encodeURIComponent(destino)}`,
+      { headers }
+    );
     const dataDestino = await resDestino.json();
 
     if (!dataOrigem[0] || !dataDestino[0]) {
